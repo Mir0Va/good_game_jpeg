@@ -1463,6 +1463,7 @@ MonoBehaviour:
   _speed: 5
   _amplitude: 2
   _frequency: 5
+  _playermovement: {fileID: 1486621666}
 --- !u!1 &1493625740
 GameObject:
   m_ObjectHideFlags: 0
