@@ -42,7 +42,7 @@ public class PlayerWave : MonoBehaviour
             _collider.isTrigger = false;
             if (IsInsideWall())
             {
-                _playerdeath.Die()
+                _playerdeath.Die();
             }
         }
     }
@@ -59,7 +59,7 @@ public class PlayerWave : MonoBehaviour
         transform.position = pos + transform.up * (Mathf.Sin(Time.time * _frequency) * _amplitude);
     }
 
-    private void IsInsideWall()
+    private bool IsInsideWall()
     {
         return Physics2D.OverlapCircle(transform.position, 0.1f, _wallLayer);
     }
