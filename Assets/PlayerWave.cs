@@ -11,6 +11,8 @@ public class PlayerWave : MonoBehaviour
     [SerializeField] private float _amplitude = 0.5f;
     [SerializeField] private  float _frequency = 20;
     [SerializeField] private PlayerMovement _playermovement;
+    [SerializeField] private PlayerDeath _playerdeath;
+    [SerializeField] private LayerMask _wallLayer;
 
     private Vector3 pos, localScale; 
 
@@ -38,6 +40,10 @@ public class PlayerWave : MonoBehaviour
         {
             pos = transform.position;
             _collider.isTrigger = false;
+            if (IsInsideWall())
+            {
+                _playerdeath.Die()
+            }
         }
     }
     
@@ -51,5 +57,10 @@ public class PlayerWave : MonoBehaviour
     {
         pos -= transform.right * (Time.deltaTime * _speed);
         transform.position = pos + transform.up * (Mathf.Sin(Time.time * _frequency) * _amplitude);
+    }
+
+    private void IsInsideWall()
+    {
+        return Physics2D.OverlapCircle(transform.position, 0.1f, _wallLayer);
     }
 }
