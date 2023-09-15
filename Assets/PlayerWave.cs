@@ -10,8 +10,8 @@ public class PlayerWave : MonoBehaviour
     [SerializeField] private float _speed = 5;
     [SerializeField] private float _amplitude = 0.5f;
     [SerializeField] private  float _frequency = 20;
-    
-    private bool facing_right = true;
+    [SerializeField] private PlayerMovement _playermovement;
+
     private Vector3 pos, localScale; 
 
     void Start()
@@ -25,7 +25,14 @@ public class PlayerWave : MonoBehaviour
         {
             _collider.isTrigger = true;
             //check facing of player, for now just right
-            MoveRight();
+            if (_playermovement.IsFacingRight)
+            {
+                MoveRight();
+            }
+            else
+            {
+                MoveLeft();
+            }
         }
         else
         {
@@ -40,4 +47,9 @@ public class PlayerWave : MonoBehaviour
         transform.position = pos + transform.up * (Mathf.Sin(Time.time * _frequency) * _amplitude);
     }
 
+    private void MoveLeft()
+    {
+        pos -= transform.right * (Time.deltaTime * _speed);
+        transform.position = pos + transform.up * (Mathf.Sin(Time.time * _frequency) * _amplitude);
+    }
 }

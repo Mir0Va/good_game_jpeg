@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _groundLayer;
 
-    private bool IsFacingRight { get; set; } = true;
+    public bool IsFacingRight { get; set; } = true;
 
     private void Update()
     {
