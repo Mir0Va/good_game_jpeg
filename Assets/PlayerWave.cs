@@ -11,9 +11,8 @@ public class PlayerWave : MonoBehaviour
     [SerializeField] private float _amplitude = 0.5f;
     [SerializeField] private  float _frequency = 20;
     [SerializeField] private PlayerMovement _playermovement;
-    [SerializeField] private PlayerDeath _playerdeath;
-    [SerializeField] private LayerMask _wallLayer;
 
+    private bool _playerUsedWave = false;
     private Vector3 pos, localScale; 
 
     void Start()
@@ -25,6 +24,11 @@ public class PlayerWave : MonoBehaviour
     {
         if (_playerinput.IsWaveButtonPressed)
         {
+            if (_playerUsedWave)
+            {
+                pos = transform.position;
+                _playerUsedWave = false;
+            }
             _collider.isTrigger = true;
             //check facing of player, for now just right
             if (_playermovement.IsFacingRight)
@@ -37,13 +41,9 @@ public class PlayerWave : MonoBehaviour
             }
         }
         else
-        {
-            pos = transform.position;
+        { 
             _collider.isTrigger = false;
-            if (IsInsideWall())
-            {
-                _playerdeath.Die();
-            }
+            _playerUsedWave = true;
         }
     }
     
@@ -59,8 +59,4 @@ public class PlayerWave : MonoBehaviour
         transform.position = pos + transform.up * (Mathf.Sin(Time.time * _frequency) * _amplitude);
     }
 
-    private bool IsInsideWall()
-    {
-        return Physics2D.OverlapCircle(transform.position, 0.1f, _wallLayer);
-    }
 }
