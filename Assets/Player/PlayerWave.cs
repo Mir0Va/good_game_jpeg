@@ -5,6 +5,8 @@ using UnityEngine.Serialization;
 
 public class PlayerWave : MonoBehaviour
 {
+    [SerializeField] private ChangeSprite changesprite;
+    [SerializeField] private TrailRenderer trail;
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private CircleCollider2D _collider;
@@ -40,8 +42,10 @@ public class PlayerWave : MonoBehaviour
         _collider.isTrigger = true;
         if (!_playerIsWave)
         {
+            changesprite.ChangePlayerSprite();
             _pos = transform.position;
             _playerIsWave = true;
+            changeTrail(); 
         }
 
         if (_playerMovement.IsFacingRight)
@@ -59,7 +63,8 @@ public class PlayerWave : MonoBehaviour
         _collider.isTrigger = false;
         _playerIsWave = false;
         _hasWaveCharge = false;
-
+        changesprite.ChangePlayerSprite();
+        changeTrail();
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, -1);
     }
 
@@ -74,5 +79,11 @@ public class PlayerWave : MonoBehaviour
     {
         _pos -= transform.right * (Time.deltaTime * _speed);
         transform.position = _pos + transform.up * (Mathf.Sin(Time.time * _frequency) * _amplitude);
+    }
+
+    private void changeTrail()
+    {
+        trail.enabled = !trail.enabled;
+        trail.Clear();
     }
 }
