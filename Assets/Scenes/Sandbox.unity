@@ -1250,10 +1250,10 @@ GameObject:
   - component: {fileID: 1486621671}
   - component: {fileID: 1486621667}
   - component: {fileID: 1486621672}
+  - component: {fileID: 1486621673}
   - component: {fileID: 1486621669}
   - component: {fileID: 1486621668}
   - component: {fileID: 1486621670}
-  - component: {fileID: 1486621673}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1464,13 +1464,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca8d03fe8674768ca19aef459766ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerinput: {fileID: 1486621667}
+  _playerInput: {fileID: 1486621667}
   _rigidbody: {fileID: 1486621670}
   _collider: {fileID: 1486621668}
   _speed: 5
   _amplitude: 2
   _frequency: 5
-  _playermovement: {fileID: 1486621666}
+  _playerMovement: {fileID: 1486621666}
 --- !u!114 &1486621672
 MonoBehaviour:
   m_ObjectHideFlags: 0
