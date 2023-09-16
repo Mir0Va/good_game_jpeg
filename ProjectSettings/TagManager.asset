@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Trap
+  - Sensor
   layers:
   - Default
   - TransparentFX

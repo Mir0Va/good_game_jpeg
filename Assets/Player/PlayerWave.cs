@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class PlayerWave : MonoBehaviour
     [SerializeField] private float _amplitude = 0.5f;
     [SerializeField] private float _frequency = 20;
     [SerializeField] private PlayerMovement _playerMovement;
-    
+    private bool _playerIsSensed;
     private bool _playerIsWave;
     private Vector3 _pos;
 
@@ -26,8 +27,8 @@ public class PlayerWave : MonoBehaviour
         {
             _hasWaveCharge = true;
         }
-
-        if (_playerInput.IsWaveButtonPressed && _hasWaveCharge)
+        
+        if (_playerInput.IsWaveButtonPressed && _hasWaveCharge && !_playerIsSensed)
         {
             DoWave();
         }
@@ -35,6 +36,7 @@ public class PlayerWave : MonoBehaviour
         {
             StopWave();
         }
+
     }
 
     private void DoWave()
@@ -85,5 +87,10 @@ public class PlayerWave : MonoBehaviour
     {
         trail.enabled = !trail.enabled;
         trail.Clear();
+    }
+
+    public void changePlayerSensed(Boolean value)
+    {
+        _playerIsSensed = value;
     }
 }
