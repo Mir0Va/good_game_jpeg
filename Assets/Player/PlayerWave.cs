@@ -23,10 +23,6 @@ public class PlayerWave : MonoBehaviour
 
     void Update()
     {
-        if (_playerMovement.IsGrounded())
-        {
-            _hasWaveCharge = true;
-        }
         
         if (_playerInput.IsWaveButtonPressed && _hasWaveCharge && !_playerIsSensed)
         {
@@ -35,6 +31,10 @@ public class PlayerWave : MonoBehaviour
         else if (_playerIsWave)
         {
             StopWave();
+        }
+        if (_playerMovement.IsGrounded())
+        {
+            _hasWaveCharge = true;
         }
 
     }
@@ -68,6 +68,7 @@ public class PlayerWave : MonoBehaviour
         changesprite.ChangePlayerSprite();
         changeTrail();
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, -1);
+        transform.position = _pos;
     }
 
 
