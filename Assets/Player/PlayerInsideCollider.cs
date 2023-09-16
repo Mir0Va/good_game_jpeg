@@ -14,7 +14,7 @@ public class PlayerInsideCollider : MonoBehaviour
         {
             if(IsInsideWall())
             {
-                _playerdeath.Die();
+                PlayerDeath.Die();
             }
         }
         

@@ -33,7 +33,7 @@ public class CrushingWall : MonoBehaviour
     
     private bool IsHittingWall()
     {
-        if (Physics2D.Raycast(transform.position, Vector2.right * _direction, _wallDetectionDistance))
+        if (Physics2D.Raycast(transform.position, Vector2.right * _direction, _wallDetectionDistance, _wallLayer))
         {
             return true;
         }
