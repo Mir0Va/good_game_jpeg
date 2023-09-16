@@ -2205,6 +2205,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1594055840}
     m_Modifications:
+    - target: {fileID: 1344892326542930450, guid: 87886f12c7149d24a937466c5f53146c, type: 3}
+      propertyPath: _wallDetectionDistance
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3332074141792016716, guid: 87886f12c7149d24a937466c5f53146c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33.3991
