@@ -24,12 +24,12 @@ public class PlayerWave : MonoBehaviour
     {
         if (_playerinput.IsWaveButtonPressed)
         {
+            _collider.isTrigger = true;
             if (_playerUsedWave)
             {
                 pos = transform.position;
                 _playerUsedWave = false;
             }
-            _collider.isTrigger = true;
             //check facing of player, for now just right
             if (_playermovement.IsFacingRight)
             {
@@ -41,9 +41,13 @@ public class PlayerWave : MonoBehaviour
             }
         }
         else
-        { 
+        {
+            if (!_playerUsedWave)
+            {
+                _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, -1);
+                _playerUsedWave = true;
+            }
             _collider.isTrigger = false;
-            _playerUsedWave = true;
         }
     }
     
