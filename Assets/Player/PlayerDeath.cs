@@ -13,7 +13,7 @@ public class PlayerDeath : MonoBehaviour
             Die();
         }
     }
-    
+
     public static void Die()
     {
         Scene currentScene = SceneManager.GetActiveScene();
