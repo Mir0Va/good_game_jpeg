@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private FootstepSoundManager _footstepSoundManager;
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private CircleCollider2D _circleCollider;
     [SerializeField] private float _moveSpeed;
@@ -10,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _groundLayer;
 
-    public bool IsFacingRight { get; set; } = true;
+    public bool IsFacingRight { get; private set; } = true;
 
     private void Update()
     {
@@ -22,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     private void CheckForMove()
     {
         _rigidbody.velocity = new Vector2(_playerInput.MoveInputVector * _moveSpeed, _rigidbody.velocity.y);
+        
+        if (IsGrounded() && _rigidbody.velocity.x is > 0f or < 0f)
+            _footstepSoundManager.PlayFootstep();
     }
 
     private void CheckForFlip()
