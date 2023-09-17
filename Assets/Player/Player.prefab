@@ -1158,12 +1158,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 726772939030678683}
-  _rotationAngle: 15
-  _rotationSpeed: 20
   _leftLeg: {fileID: 28294564090074612}
   _rightLeg: {fileID: 1823744953297577387}
   _leftHand: {fileID: 7631509152944155024}
   _rightHand: {fileID: 268450913156033595}
+  _ropeMovement: {fileID: 7566321477757410675}
   _amplitude: 0.2
   _frequency: 5
   _offset: 3
+  _rotationAngle: 15
+  _rotationSpeed: 20

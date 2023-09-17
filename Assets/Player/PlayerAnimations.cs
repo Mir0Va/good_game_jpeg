@@ -4,16 +4,17 @@ using UnityEngine;
 public class PlayerAnimations : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private float _rotationAngle = 15.0f;
-    [SerializeField] private float _rotationSpeed = 5.0f;
     [SerializeField] private Transform _leftLeg;
     [SerializeField] private Transform _rightLeg;
     [SerializeField] private Transform _leftHand;
     [SerializeField] private Transform _rightHand;
+    [SerializeField] private RopeMovement _ropeMovement;
     
     [SerializeField] private float _amplitude = 1.0f;
     [SerializeField] private float _frequency = 1.0f;
     [SerializeField] private float _offset;
+    [SerializeField] private float _rotationAngle = 15.0f;
+    [SerializeField] private float _rotationSpeed = 5.0f;
     
     private int _legAnimDirection = 1;
     private Quaternion _leftLegInitialRotation;
@@ -35,6 +36,12 @@ public class PlayerAnimations : MonoBehaviour
     {
         if (_rigidbody.velocity.x != 0)
         {
+            AnimateLegs();
+            AnimateHands();
+        }
+        else if (_ropeMovement.IsClimbing)
+        {
+            Debug.Log("Climbing...");
             AnimateLegs();
             AnimateHands();
         }
